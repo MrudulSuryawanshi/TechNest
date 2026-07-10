@@ -1,0 +1,105 @@
+{
+  "users": [
+    {
+      "fullname": "MRUDUL ",
+      "email": "m@gmail.com",
+      "mobileno": "1111111111",
+      "password": "123456",
+      "copassword": "123456",
+      "role": "customer",
+      "id": "ILhDFMNeqSo"
+    },
+    {
+      "fullname": "sejal",
+      "email": "sejal@gmail.com",
+      "mobileno": "2222222222",
+      "password": "222222",
+      "copassword": "222222",
+      "role": "customer",
+      "id": "6rOPWvwviOg"
+    },
+    {
+      "fullname": "tanmay",
+      "email": "tanmay@gmail.com",
+      "mobileno": "3333333333",
+      "password": "333333",
+      "copassword": "333333",
+      "role": "customer",
+      "id": "0SUdpeH1Crc"
+    },
+    {
+      "fullname": "sarang",
+      "email": "sarang@gmail.com",
+      "mobileno": "4444444444",
+      "password": "444444",
+      "copassword": "444444",
+      "role": "customer",
+      "id": "fC8aSUjiV8Q"
+    },
+    {
+      "fullname": "shravani",
+      "email": "shravani@gmail.com",
+      "mobileno": "5555555555",
+      "password": "555555",
+      "copassword": "555555",
+      "role": "customer",
+      "id": "WEQ84f46FPg"
+    },
+    {
+      "fullname": "yash",
+      "email": "yash@gmail.com",
+      "mobileno": "6666666666",
+      "password": "666666",
+      "copassword": "666666",
+      "role": "customer",
+      "id": "aAg2OyDsWKI"
+    } 
+  ],
+
+  "products": [
+  {
+    "id": 1,
+    "name": "HP Pavilion 15",
+    "category": "Laptops",
+    "price": 54999,
+    "image": "/Images/hp-laptop.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Boat Rockerz 450",
+    "category": "Headphones",
+    "price": 2499,
+    "image": "/Images/boat-headphones.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Logitech M331",
+    "category": "Mouse",
+    "price": 999,
+    "image": "/Images/logitech-mouse.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Samsung Galaxy M16",
+    "category": "Mobiles",
+    "price": 15999,
+    "image": "/Images/samsung-mobile.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Redragon K552",
+    "category": "Keyboards",
+    "price": 2999,
+    "image": "/Images/redragon-keyboard.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Noise ColorFit Pro",
+    "category": "Smartwatches",
+    "price": 3499,
+    "image": "/Images/noise-watch.jpg"
+  }
+],
+
+  "$schema": "./node_modules/json-server/schema.json"
+}
