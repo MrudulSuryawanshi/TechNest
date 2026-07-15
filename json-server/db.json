@@ -6,7 +6,7 @@
       "mobileno": "1111111111",
       "password": "123456",
       "copassword": "123456",
-      "role": "customer",
+      "role": "admin",
       "id": "ILhDFMNeqSo"
     },
     {
@@ -53,53 +53,58 @@
       "copassword": "666666",
       "role": "customer",
       "id": "aAg2OyDsWKI"
-    } 
+    }
   ],
-
   "products": [
-  {
-    "id": 1,
-    "name": "HP Pavilion 15",
-    "category": "Laptops",
-    "price": 54999,
-    "image": "/Images/hp-laptop.jpg"
-  },
-  {
-    "id": 2,
-    "name": "Boat Rockerz 450",
-    "category": "Headphones",
-    "price": 2499,
-    "image": "/Images/boat-headphones.jpg"
-  },
-  {
-    "id": 3,
-    "name": "Logitech M331",
-    "category": "Mouse",
-    "price": 999,
-    "image": "/Images/logitech-mouse.jpg"
-  },
-  {
-    "id": 4,
-    "name": "Samsung Galaxy M16",
-    "category": "Mobiles",
-    "price": 15999,
-    "image": "/Images/samsung-mobile.jpg"
-  },
-  {
-    "id": 5,
-    "name": "Redragon K552",
-    "category": "Keyboards",
-    "price": 2999,
-    "image": "/Images/redragon-keyboard.jpg"
-  },
-  {
-    "id": 6,
-    "name": "Noise ColorFit Pro",
-    "category": "Smartwatches",
-    "price": 3499,
-    "image": "/Images/noise-watch.jpg"
-  }
-],
-
+    {
+      "id": "1",
+      "name": "HP Pavilion 15",
+      "category": "Laptops",
+      "price": 54999,
+      "image": "/Images/hp-laptop.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Boat Rockerz 450",
+      "category": "Headphones",
+      "price": 2499,
+      "image": "/Images/boat-headphones.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Logitech M331",
+      "category": "Mouse",
+      "price": 999,
+      "image": "/Images/logitech-mouse.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Samsung Galaxy M16",
+      "category": "Mobiles",
+      "price": 15999,
+      "image": "/Images/samsung-mobile.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Redragon K552",
+      "category": "Keyboards",
+      "price": 2999,
+      "image": "/Images/redragon-keyboard.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Noise ColorFit Pro",
+      "category": "Smartwatches",
+      "price": 3499,
+      "image": "/Images/noise-watch.jpg"
+    },
+    {
+      "image": "/Images/Product.jpg",
+      "price": 50000,
+      "category": "Laptops",
+      "name": "HP Laptop",
+      "id": "ldwgmDxodfE"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
