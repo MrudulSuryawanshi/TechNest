@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 function AuthProvider({ children }) {
   // console.log("AuthProvider rendered");
   const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(
     localStorage.getItem("user")
       ? JSON.parse(localStorage.getItem("user"))
@@ -26,15 +27,18 @@ function AuthProvider({ children }) {
   };
 
   const me = async () => {
-    // console.log("me function called.")
-    if (!user) {
-      setAuthenticated(false);
-      return null;
+    try {
+      if (!user) {
+        setAuthenticated(false);
+        return;
+      }
+    } finally {
+      setLoading(false);
     }
 
     const userData = await axios.get(
       `${import.meta.env.VITE_API_URL}/users?email=${encodeURIComponent(user.email)}`,
-    );  
+    );
 
     if (userData.data.length === 0) {
       logOut();
@@ -59,11 +63,12 @@ function AuthProvider({ children }) {
     if (user) {
       me();
     }
+    setLoading(false);
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ savedCredential, authenticated, user, logOut, me }}
+      value={{ savedCredential,loading, authenticated, user, logOut, me }}
     >
       {children}
     </AuthContext.Provider>

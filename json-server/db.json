@@ -104,6 +104,20 @@
       "category": "Laptops",
       "name": "HP Laptop",
       "id": "ldwgmDxodfE"
+    },
+    {
+      "image": "/Image",
+      "price": 20000,
+      "category": "Mobiles",
+      "name": "mobile",
+      "id": "4iBW1NZvsw4"
+    },
+    {
+      "image": "/Image",
+      "price": 12345,
+      "category": "Mobiles",
+      "name": "vivo",
+      "id": "W4YXAL2-XgA"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
