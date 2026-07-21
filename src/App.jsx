@@ -12,45 +12,67 @@ import AddProduct from "./Pages/AddProduct";
 import EditProduct from "./Pages/EditProduct";
 import AuthWrap from "./Auth/AuthWrap";
 import Unauthorized from "./Pages/Unauthorized";
+import AuthRoute from "./Auth/AuthRoute";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={
-        <AuthWrap allowedRoles={["customer","admin"]}>
-          <Home />
-        </AuthWrap>
-      } />
-      <Route path="/login" element={
-        <AuthWrap allowedRoles={["customer","admin"]}>
-          <Login />
-        </AuthWrap>
-      } />
-      <Route path="/cart" element={
-        <AuthWrap allowedRoles={["customer"]}>
-          <Cart />
-        </AuthWrap>
-      } />
-      <Route path="/register" element={
-        <AuthWrap allowedRoles={["customer","admin"]}>
-          <Register />
-        </AuthWrap>
-      } />
-      <Route path="/products" element={
-        <AuthWrap allowedRoles={["customer","admin"]}>
-          <Product />
-        </AuthWrap>
-      } />
-      <Route path="/add-product" element={
-        <AuthWrap allowedRoles={["admin"]}>
-          <AddProduct />
-        </AuthWrap>
-      } />
-      <Route path="/edit-product/:id" element={
-        <AuthWrap allowedRoles={["admin"]}>
-          <EditProduct />
-        </AuthWrap>
-      } />
+      <Route
+        path="/"
+        element={
+          <AuthWrap allowedRoles={["customer", "admin"]}>
+            <Home />
+          </AuthWrap>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <AuthRoute>
+            <Login />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <AuthWrap allowedRoles={["customer"]}>
+            <Cart />
+          </AuthWrap>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <AuthRoute>
+            <Register />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/products"
+        element={
+          <AuthWrap allowedRoles={["customer", "admin"]}>
+            <Product />
+          </AuthWrap>
+        }
+      />
+      <Route
+        path="/add-product"
+        element={
+          <AuthWrap allowedRoles={["admin"]}>
+            <AddProduct />
+          </AuthWrap>
+        }
+      />
+      <Route
+        path="/edit-product/:id"
+        element={
+          <AuthWrap allowedRoles={["admin"]}>
+            <EditProduct />
+          </AuthWrap>
+        }
+      />
       <Route path="/unauthorized" element={<Unauthorized />} />
     </Routes>
   );

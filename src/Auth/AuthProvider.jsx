@@ -25,7 +25,7 @@ function AuthProvider({ children }) {
     setUser(null);
     setAuthenticated(false);
   };
-
+  
   const me = async () => {
     try {
       if (!user) {
