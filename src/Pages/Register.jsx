@@ -8,6 +8,9 @@ import Navbar from "../Components/Navbar";
 import Login from "./Login";
 import InputField from "../Components/InputField";
 import axios from "axios";
+import { useContext } from "react";
+import { SnackbarContext } from "../Context/SnackbarContext";
+
 
 const registerSchema = yup.object({
   fullname: yup.string().required("Enter the fullname"),
@@ -33,6 +36,8 @@ const registerSchema = yup.object({
 
 function Register() {
   const navigate = useNavigate();
+  const { showSnackbar } = useContext(SnackbarContext);
+
   const {
     register,
     handleSubmit,
@@ -71,7 +76,7 @@ function Register() {
       );
 
       if (response.status === 201 && response.data && response.data.id) {
-        alert("Registration successful! Please login.");
+        showSnackbar("Registration successful! Please login.", "success");
         reset();
         navigate("/login");
         return;
@@ -79,7 +84,7 @@ function Register() {
 
       throw new Error("Registration failed. Please try again.");
     } catch (error) {
-      alert(error.message);
+      showSnackbar(error.message, "error");
     }
   };
   return (

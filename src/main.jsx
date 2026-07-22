@@ -4,13 +4,16 @@ import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./Auth/AuthProvider.jsx";
 import "./index.css";
 import App from "./App.jsx";
+import SnackbarProvider from "./Auth/SnackbarProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <SnackbarProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </SnackbarProvider>
     </AuthProvider>
   </StrictMode>,
 );

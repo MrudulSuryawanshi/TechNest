@@ -10,6 +10,7 @@ import Navbar from "../Components/Navbar";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
+import { SnackbarContext } from "../Context/SnackbarContext";
 
 const loginSchema = yup.object({
   email: yup
@@ -25,6 +26,8 @@ const loginSchema = yup.object({
 function Login() {
   const navigate = useNavigate();
   const { savedCredential } = useContext(AuthContext);
+  const { showSnackbar } = useContext(SnackbarContext);
+
   const {
     register,
     handleSubmit,
@@ -62,11 +65,11 @@ function Login() {
         role: user.role
       };
       savedCredential(savedUser);
-      alert("Login successful.");
+      showSnackbar("Login Successful!", "success");
       navigate("/");
       console.log(user);
     } catch (error) {
-      alert(error.message);
+      showSnackbar(error.message, "error");
     }
   };
 

@@ -2,9 +2,13 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ProductForm from "../Components/ProductForm";
+import { useContext } from "react";
+import { SnackbarContext } from "../Context/SnackbarContext";
+
 
 const AddProduct = () => {
   const navigate = useNavigate();
+  const { showSnackbar } = useContext(SnackbarContext);
 
   const handleAddProduct = async (data) => {
     try {
@@ -13,12 +17,12 @@ const AddProduct = () => {
         data
       );
 
-      alert("Product added successfully!");
+      showSnackbar("Product added successfully!","success");
 
       navigate("/");
     } catch (error) {
       console.log(error);
-      alert("Failed to add product.");
+      showSnackbar("Failed to add product.", "error");
     }
   };
 
