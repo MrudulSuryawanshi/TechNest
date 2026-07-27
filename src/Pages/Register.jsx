@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "../Style/Auth.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import Navbar from "../Components/Navbar";
 import Login from "./Login";
 import InputField from "../Components/InputField";
 import axios from "axios";
@@ -89,7 +88,6 @@ function Register() {
   };
   return (
     <>
-      <Navbar />
       <div className="auth-container">
         <div className="auth-box">
           <h1>Register</h1>

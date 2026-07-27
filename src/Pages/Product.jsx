@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../Components/Navbar";
 import FilterSidebar from "../Components/FilterSidebar";
 import ProductCard from "../Components/ProductCard";
 import axios from "axios";
@@ -34,7 +33,6 @@ const Product = () => {
 
   return (
     <>
-      <Navbar />
       <div className="min-h-screen bg-slate-100 py-8">
         <div className="max-w-[1500px] mx-auto px-16 py-8">
           <div className="flex gap-8">

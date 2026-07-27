@@ -6,7 +6,6 @@ import "../Style/Auth.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import Register from "./Register";
 import InputField from "../Components/InputField";
-import Navbar from "../Components/Navbar";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
@@ -75,7 +74,6 @@ function Login() {
 
   return (
     <>
-      <Navbar />
       <div className="auth-container">
         <div className="auth-box">
           <h1>Welcome Back</h1>
