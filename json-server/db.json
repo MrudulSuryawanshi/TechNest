@@ -64,7 +64,7 @@
       "price": 54999,
       "image": "/Images/hp-laptop.jpg",
       "description": "A reliable laptop designed for students and professionals with powerful performance and long battery life.",
-      "stock": 10,
+      "stock": 0,
       "specifications": {
         "Processor": "Intel Core i5 13th Gen",
         "RAM": "16 GB",
@@ -147,7 +147,7 @@
       "id": "6",
       "name": "Noise ColorFit Pro",
       "brand": "Noise",
-      "category": "Smartwatches",
+      "category": "SmartWatches",
       "price": 3499,
       "image": "/Images/noise-watch.jpg",
       "description": "A stylish smartwatch with fitness tracking, health monitoring, and smart notifications.",
@@ -215,5 +215,15 @@
       "id": "W4YXAL2-XgA"
     }
   ],
+
+  "categories": [
+    { "id": 1, "name": "Mobiles" },
+    { "id": 2, "name": "Laptops" },
+    { "id": 3, "name": "Headphones" },
+    { "id": 4, "name": "SmartWatches" },
+    { "id": 5, "name": "Mouse" },
+    { "id": 6, "name": "Accessories" }
+  ],
+
   "$schema": "./node_modules/json-server/schema.json"
 }

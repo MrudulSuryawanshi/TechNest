@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { SnackbarContext } from "../Context/SnackbarContext";
-import CustomSnackbar from "../Components/CustomSnackbar";
+import { SnackbarContext } from "../../Context/SnackbarContext";
+import CustomSnackbar from "./CustomSnackbar";
 
 const SnackbarProvider = ({ children }) => {
   const [snackbar, setSnackbar] = useState({

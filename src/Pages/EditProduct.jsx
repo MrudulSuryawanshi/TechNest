@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import ProductForm from "../Components/ProductForm";
 import { useContext } from "react";
+import ProductForm from "./Product/ProductForm";
 import { SnackbarContext } from "../Context/SnackbarContext";
+
 
 const EditProduct = () => {
   const { id } = useParams();

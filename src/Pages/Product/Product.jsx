@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import FilterSidebar from "../Components/FilterSidebar";
-import ProductCard from "../Components/ProductCard";
+import FilterSidebar from "./FilterSidebar";
+import ProductCard from "./ProductCard";
 import axios from "axios";
 import { useEffect, useContext } from "react";
-import { AuthContext } from "../Auth/AuthProvider";
+import { AuthContext } from "../../Auth/AuthProvider";
 import { Link } from "react-router-dom";
+import { useSearch } from "../../Context/SearchContext";
 
 const Product = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [products, setProducts] = useState([]);
+  const { searchTerm } = useSearch();
 
   const { user } = useContext(AuthContext);
 
@@ -26,10 +28,18 @@ const Product = () => {
     }
   };
 
-  const filteredProducts =
-    selectedCategory === "All"
-      ? products
-      : products.filter((product) => product.category === selectedCategory);
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory =
+      selectedCategory === "All" || product.category === selectedCategory;
+
+    const search = searchTerm.toLowerCase();
+
+    const matchesSearch =
+      product.name.toLowerCase().includes(search) ||
+      product.category.toLowerCase().includes(search);
+
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <>
@@ -55,11 +65,20 @@ const Product = () => {
                 </Link>
               )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
+              {filteredProducts.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                  {filteredProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center h-80 text-gray-500">
+                  <h2 className="text-3xl font-semibold">No Products Found</h2>
+                  <p className="mt-2 text-lg">
+                    Try searching with a different name or category.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 
 const productSchema = yup.object({
   name: yup.string().required("Product name is required"),
@@ -41,9 +42,18 @@ const ProductForm = ({ defaultValues, onSubmit, buttonText }) => {
     defaultValues,
   });
 
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     reset(defaultValues);
   }, [defaultValues, reset]);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/categories`)
+      .then((res) => setCategories(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-10">
@@ -96,12 +106,12 @@ const ProductForm = ({ defaultValues, onSubmit, buttonText }) => {
                            focus:border-blue-500 transition"
               >
                 <option value="">Select Category</option>
-                <option value="Laptops">Laptops</option>
-                <option value="Mobiles">Mobiles</option>
-                <option value="Headphones">Headphones</option>
-                <option value="Smartwatches">Smartwatches</option>
-                <option value="Keyboards">Keyboards</option>
-                <option value="Mouse">Mouse</option>
+
+                {categories.map((category) => (
+                  <option key={category.id} value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
 
               <p className="text-red-500 text-sm mt-1">

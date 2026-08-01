@@ -2,7 +2,7 @@ import React from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import "../Style/Auth.css";
+import "../Auth/Auth.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import InputField from "../Components/InputField";

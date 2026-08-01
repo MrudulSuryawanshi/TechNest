@@ -16,10 +16,10 @@ const Cart = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 px-8 sm:px-10 lg:px-20 py-8">
+    <div className="min-h-screen bg-gray-50 py-8">
 
-      <div className="w-full mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">
+      <div className="w-[1080px] mx-auto mb-8">
+        <h1 className="text-3xl font-bold text-gray-900">
           Shopping Cart
         </h1>
 
@@ -29,7 +29,7 @@ const Cart = () => {
       </div>
 
       {cart.length === 0 ? (
-        <div className="w-full bg-white rounded-2xl shadow-sm p-12 text-center">
+        <div className="w-full bg-white rounded-2xl border border-gray-100 p-12 text-center">
           <h2 className="text-xl font-semibold text-gray-800">
             Your cart is empty
           </h2>
@@ -39,30 +39,30 @@ const Cart = () => {
           </p>
         </div>
       ) : (
-        <div className="w-full grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_500px] gap-8">
+        <div className="w-[1080px] mx-auto flex gap-[30px]">
 
-          <div className="space-y-4">
+          <div className="w-[600px] space-y-4">
             {cart.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-5"
+                className="bg-white rounded-xl border border-gray-100 p-4"
               >
                 <div className="flex items-center gap-4">
 
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+                      className="w-full h-full object-cover"
                     />
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <h2 className="font-semibold text-gray-800 truncate">
+                    <h2 className="font-semibold text-gray-900 truncate">
                       {item.name}
                     </h2>
 
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p className="text-xs text-gray-400 uppercase tracking-wide mt-0.5">
                       {item.category}
                     </p>
 
@@ -74,7 +74,7 @@ const Cart = () => {
                   <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
                     <button
                       onClick={() => decreaseQuantity(item.id)}
-                      className="w-8 h-8 hover:bg-gray-100 text-gray-700 font-semibold"
+                      className="w-7 h-7 hover:bg-gray-100 text-gray-700 font-semibold"
                     >
                       −
                     </button>
@@ -85,14 +85,14 @@ const Cart = () => {
 
                     <button
                       onClick={() => increaseQuantity(item.id)}
-                      className="w-8 h-8 hover:bg-gray-100 text-gray-700 font-semibold"
+                      className="w-7 h-7 hover:bg-gray-100 text-gray-700 font-semibold"
                     >
                       +
                     </button>
                   </div>
 
                   <div className="hidden sm:block w-24 text-right">
-                    <p className="font-bold text-gray-800">
+                    <p className="font-bold text-gray-900">
                       ₹{item.price * item.quantity}
                     </p>
                   </div>
@@ -110,7 +110,7 @@ const Cart = () => {
                     Item Total:{" "}
                   </span>
 
-                  <span className="font-bold text-gray-800">
+                  <span className="font-bold text-gray-900">
                     ₹{item.price * item.quantity}
                   </span>
                 </div>
@@ -118,9 +118,9 @@ const Cart = () => {
             ))}
           </div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 h-fit lg:sticky lg:top-24">
+          <div className="w-[450px] bg-white rounded-xl border border-gray-100 p-6 h-fit sticky top-24">
 
-            <h2 className="text-xl font-bold text-gray-800">
+            <h2 className="text-xl font-bold text-gray-900">
               Order Summary
             </h2>
 
@@ -137,7 +137,7 @@ const Cart = () => {
               </div>
 
               <div className="border-t pt-4 flex justify-between">
-                <span className="font-semibold text-gray-800">
+                <span className="font-semibold text-gray-900">
                   Total
                 </span>
 
@@ -148,7 +148,7 @@ const Cart = () => {
 
             </div>
 
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-3 mt-6 font-semibold transition">
+            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full py-3 mt-6 font-semibold transition">
               Proceed to Checkout
             </button>
 

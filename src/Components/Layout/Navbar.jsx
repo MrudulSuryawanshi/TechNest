@@ -1,18 +1,37 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { FiShoppingCart, FiUser } from "react-icons/fi";
 import "./Navbar.css";
-import { AuthContext } from "../Auth/AuthProvider";
-import { Menu, MenuItem, Typography, Divider } from "@mui/material";
-import { useState, useContext } from "react";
+import { AuthContext } from "../../Auth/AuthProvider";
+import { Menu, MenuItem } from "@mui/material";
+import { useSearch } from "../../Context/SearchContext";
+import axios from "axios";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { searchTerm, setSearchTerm } = useSearch();
+  const navigate = useNavigate();
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/categories`)
+      .then((res) => {
+        setCategories(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const categoryOptions = categories.map((category) => category.name);
+
   const id = React.useId();
   const buttonId = `${id}-button`;
   const menuId = `${id}-menu`;
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
 
@@ -23,16 +42,43 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log(user);
+
   return (
     <nav className="navbar">
       <NavLink to="/" className="logo">
         <h2>TechNest</h2>
       </NavLink>
 
+      {/* Search Box */}
       <div className="search-box">
-        <FiSearch className="search-icon" />
-        <input type="text" placeholder="Search for products..." />
+        <Autocomplete
+          freeSolo
+          options={categoryOptions}
+          inputValue={searchTerm}
+          openOnFocus={false}
+          
+          filterOptions={(options, state) =>
+            state.inputValue.length > 0
+              ? options.filter((option) =>
+                  option.toLowerCase().includes(state.inputValue.toLowerCase()),
+                )
+              : []
+          }
+          onInputChange={(event, value) => {
+            setSearchTerm(value);
+
+            if (value.trim() !== "") {
+              navigate("/products");
+            }
+          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              placeholder="Search categories..."
+              size="small"
+            />
+          )}
+        />
       </div>
 
       <ul className="nav-links">
@@ -74,7 +120,7 @@ const Navbar = () => {
                 }}
               >
                 <MenuItem disabled>Hi, {user.fullname}</MenuItem>
-                
+
                 <MenuItem
                   onClick={() => {
                     logOut();

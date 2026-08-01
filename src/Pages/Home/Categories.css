@@ -32,6 +32,10 @@
 }
 
 .category-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-size: 45px;
   color: #2563eb;
   margin-bottom: 10px;

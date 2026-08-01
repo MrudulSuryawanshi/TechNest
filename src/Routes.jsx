@@ -1,16 +1,16 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./Pages/Login";
-import AuthRoute from "./Auth/AuthRoute";
-import Home from "./Pages/Home";
-import AuthWrap from "./Auth/AuthWrap";
-import Cart from "./Pages/Cart";
 import Register from "./Pages/Register";
+import Cart from "./Pages/Cart";
 import AddProduct from "./Pages/AddProduct";
 import EditProduct from "./Pages/EditProduct";
-import ProductDetails from "./Pages/ProductDetails";
 import Unauthorized from "./Pages/Unauthorized";
-import Product from "./Pages/Product";
+import Home from "./Pages/Home/Home";
+import Product from "./Pages/Product/Product";
+import ProductDetails from "./Pages/Product/ProductDetails";
+import AuthRoute from "./Auth/AuthRoute";
+import AuthWrap from "./Auth/AuthWrap";
 
 const AppRoutes = () => {
   return (

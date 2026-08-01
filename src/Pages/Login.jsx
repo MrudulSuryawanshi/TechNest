@@ -2,7 +2,7 @@ import React from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import "../Style/Auth.css";
+import "../Auth/Auth.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import Register from "./Register";
 import InputField from "../Components/InputField";
@@ -10,6 +10,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
 import { SnackbarContext } from "../Context/SnackbarContext";
+
 
 const loginSchema = yup.object({
   email: yup

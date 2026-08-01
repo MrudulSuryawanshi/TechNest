@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../Auth/AuthProvider";
-import { useNavigate } from "react-router-dom";
-import { useCart } from "../Context/CartContext";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Auth/AuthProvider";
+import { useCart } from "../../Context/CartContext";
+
 
 const ProductCard = ({ product }) => {
   const { user } = useContext(AuthContext);

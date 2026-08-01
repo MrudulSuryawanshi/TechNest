@@ -1,27 +1,28 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import AuthProvider from "./Auth/AuthProvider.jsx";
 import "./index.css";
-import App from "./App.jsx";
-import SnackbarProvider from "./Auth/SnackbarProvider.jsx";
-import Layout from "./Components/Layout.jsx";
-import { CartProvider } from "./Context/CartContext.jsx";
+import SnackbarProvider from "./Components/Snackbar/SnackbarProvider";
+import AuthProvider from "./Auth/AuthProvider";
+import { CartProvider } from "./Context/CartContext";
+import { SearchProvider } from "./Context/SearchContext";
+import { BrowserRouter } from "react-router-dom";
+import Layout from "./Components/Layout/Layout";
+import App from "./App";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <CartProvider>
+    <SnackbarProvider>
       <AuthProvider>
-        <SnackbarProvider>
-          <BrowserRouter>
-            <Layout>
-              <CartProvider>
+        <CartProvider>
+          <SearchProvider>
+            <BrowserRouter>
+              <Layout>
                 <App />
-              </CartProvider>
-            </Layout>
-          </BrowserRouter>
-        </SnackbarProvider>
+              </Layout>
+            </BrowserRouter>
+          </SearchProvider>
+        </CartProvider>
       </AuthProvider>
-    </CartProvider>
+    </SnackbarProvider>
   </StrictMode>,
 );

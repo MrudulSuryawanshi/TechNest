@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import ProductForm from "../Components/ProductForm";
 import { useContext } from "react";
+import ProductForm from "./Product/ProductForm";
 import { SnackbarContext } from "../Context/SnackbarContext";
 
 const AddProduct = () => {
