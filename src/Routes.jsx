@@ -24,14 +24,8 @@ const AppRoutes = () => {
           </AuthRoute>
         }
       />
-      <Route
-        path="/cart"
-        element={
-          <AuthWrap allowedRoles={["customer"]}>
-            <Cart />
-          </AuthWrap>
-        }
-      />
+      <Route path="/cart" element={<Cart />} />
+      
       <Route
         path="/register"
         element={

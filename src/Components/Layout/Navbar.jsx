@@ -8,11 +8,15 @@ import { useSearch } from "../../Context/SearchContext";
 import axios from "axios";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import { useCart } from "../../Context/CartContext";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const { searchTerm, setSearchTerm } = useSearch();
   const navigate = useNavigate();
+  const { cart } = useCart();
+
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const [categories, setCategories] = useState([]);
 
@@ -56,7 +60,6 @@ const Navbar = () => {
           options={categoryOptions}
           inputValue={searchTerm}
           openOnFocus={false}
-          
           filterOptions={(options, state) =>
             state.inputValue.length > 0
               ? options.filter((option) =>
@@ -91,8 +94,14 @@ const Navbar = () => {
         </li>
 
         <li>
-          <NavLink to="/cart">
-            <FiShoppingCart />
+          <NavLink to="/cart" className="relative">
+            <FiShoppingCart className="text-xl" />
+
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center font-semibold px-1">
+                {cartCount}
+              </span>
+            )}
           </NavLink>
         </li>
 
