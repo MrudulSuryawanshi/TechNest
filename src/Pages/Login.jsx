@@ -60,6 +60,7 @@ function Login() {
     try {
       const user = await customerLogin(data.email, data.password);
       const savedUser = {
+        id: user.id,
         fullname: user.fullname,
         email: user.email,
         role: user.role

@@ -3,12 +3,21 @@ import { FiShoppingCart } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Auth/AuthProvider";
 import { useCart } from "../../Context/CartContext";
-
+import { SnackbarContext } from "../../Context/SnackbarContext";
 
 const ProductCard = ({ product }) => {
   const { user } = useContext(AuthContext);
   const { addToCart } = useCart();
+  // const { showSnackbar } = useSnackbar();
+  const { showSnackbar } = useContext(SnackbarContext);
   const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    addToCart(product);
+
+    showSnackbar(`${product.name} added to cart`, "success");
+  };
+
   return (
     <div
       onClick={() => navigate(`/product/${product.id}`)}
@@ -30,9 +39,10 @@ const ProductCard = ({ product }) => {
         <p className="text-xl font-bold text-blue-600 mt-3">₹{product.price}</p>
 
         <button
+          type="button"
           onClick={(e) => {
             e.stopPropagation();
-            addToCart(product);
+            handleAddToCart();
           }}
           className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-3 mt-5 font-semibold flex items-center justify-center gap-2 transition"
         >

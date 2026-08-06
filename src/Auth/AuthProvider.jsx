@@ -34,22 +34,31 @@ function AuthProvider({ children }) {
         return;
       }
 
-      const userData = await axios.get(
+      const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/users?email=${encodeURIComponent(user.email)}`,
       );
+      
 
-      if (userData.data.length === 0) {
+      if (data.length === 0) {
         logOut();
         return;
       }
 
-      const savedUser = {
-        fullname: userData.data[0].fullname,
-        email: userData.data[0].email,
-        role: userData.data[0].role,
-      };
+      const dbUser = data[0];
 
-      savedCredential(savedUser);
+      if (
+        user.id !== dbUser.id ||
+        user.fullname !== dbUser.fullname ||
+        user.email !== dbUser.email ||
+        user.role !== dbUser.role
+      ) {
+        savedCredential({
+          id: dbUser.id,
+          fullname: dbUser.fullname,
+          email: dbUser.email,
+          role: dbUser.role,
+        });
+      }
     } catch (error) {
       console.error(error);
       logOut();
@@ -65,6 +74,8 @@ function AuthProvider({ children }) {
       setLoading(false);
     }
   }, []);
+
+
 
   return (
     <AuthContext.Provider

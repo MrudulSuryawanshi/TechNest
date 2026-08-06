@@ -27,7 +27,7 @@ const CustomSnackbar = ({
         {message}
       </Alert>
     </Snackbar>
-  );
+      );
 };
 
 export default CustomSnackbar;
