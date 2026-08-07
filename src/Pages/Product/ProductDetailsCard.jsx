@@ -1,4 +1,7 @@
 import React from "react";
+import { useContext } from "react";
+import { SnackbarContext } from "../../Context/SnackbarContext";
+import { useCart } from "../../Context/CartContext";
 import {
   Container,
   Paper,
@@ -10,6 +13,18 @@ import {
 } from "@mui/material";
 
 const ProductDetailsCard = ({ product }) => {
+  const { cart, addToCart } = useCart();
+
+  const cartItem = cart.find((item) => item.id === product.id);
+  const isMaxStockReached = cartItem && cartItem.quantity >= product.stock;
+
+  const { showSnackbar } = useContext(SnackbarContext);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    showSnackbar(`${product.name} added to cart`, "success");
+  };
+
   return (
     <Container
       maxWidth="lg"
@@ -112,10 +127,15 @@ const ProductDetailsCard = ({ product }) => {
                 >
                   <Button
                     variant="contained"
-                    disabled={product.stock === 0}
                     fullWidth
+                    disabled={product.stock === 0 || isMaxStockReached}
+                    onClick={handleAddToCart}
                   >
-                    Add to Cart
+                    {product.stock === 0
+                      ? "Out of Stock"
+                      : isMaxStockReached
+                        ? "Maximum Stock Reached"
+                        : "Add to Cart"}
                   </Button>
 
                   <Button
